@@ -139,7 +139,7 @@
     }
     .message p{ margin:0; font-size:15px; line-height:1.5; }
 
-    /* Galeria */
+    
     .gallery{
       display:none;
       margin-top:14px;
@@ -166,7 +166,7 @@
     }
     .grid img:hover{ transform: translateY(-2px) scale(1.01); filter: brightness(1.02); }
 
-    /* “Player” invisível do YouTube */
+    
     .player-wrap{
       display:none;
       margin-top:12px;
@@ -227,25 +227,25 @@
       <button class="btn-final" id="btn3" disabled>Última surpresa 🎵</button>
     </div>
 
-    <!-- 1ª mensagem -->
+   
     <section class="message" id="msg1" aria-live="polite">
       <p>
         <strong>Feliz aniversário, meu amor! 🎂</strong><br>
-        Que o seu dia seja leve, lindo e cheio de carinho… igual você.
+         Que o seu dia seja perfeito, lindo e cheio de alegria… igual você.
         <br><br>
-        <strong>Eu te amo muito, Paloma.</strong> 💖
+        <strong>Eu te amo muito, minha princesa.</strong> 💖
       </p>
     </section>
 
-    <!-- 2ª mensagem (mantém a sua original) -->
+    
     <section class="message" id="msg2" aria-live="polite">
       <p>
-        Se eu pudesse te dar um presente infinito, eu te daria
-        <strong>todas as versões de mim</strong> escolhendo você, todos os dias. 🥺❤️
+        Se eu pudesse te dar o mundo, eu te daria
+        <strong>sem pensar duas vezes</strong> você é TUDO pra mim 🥺❤️
       </p>
     </section>
 
-    <!-- Galeria de fotos (aparece no botão 2) -->
+    
     <section class="gallery" id="gallery" aria-label="Fotos nossas">
       <div class="grid">
         <img src="assets/foto1.jpg" alt="Foto 1 - nós" />
@@ -254,18 +254,18 @@
       </div>
     </section>
 
-    <!-- Final + música (aparece no botão 3) -->
+    
     <section class="message" id="finalMsg" aria-live="polite">
       <p>
         <strong>Agora só falta uma coisa:</strong><br>
         fecha os olhos por 2 segundos… e sente o quanto eu te amo. 💞
         <br><br>
-        <strong>Você é minha escolha.</strong> Hoje e sempre. ❤️
+        <strong>Você é a melhor.</strong> Hoje e sempre. ❤️
       </p>
     </section>
 
     <div class="player-wrap" id="playerWrap">
-      <!-- YouTube (autoplay no clique) -->
+  
       <iframe
         id="ytPlayer"
         width="100%"
@@ -282,13 +282,13 @@
     </div>
 
     <div class="tiny">
-      <span>Feito com amor</span>
+      <span>Feito pelo seu momolado</span>
       <span>💗</span>
     </div>
   </main>
 
   <script>
-    // Fundo com corações suaves
+
     const floatHearts = document.getElementById("floatHearts");
     const HEARTS = ["💖","💘","💗","❤️"];
 
@@ -319,7 +319,7 @@
       }
     }
 
-    // Botões
+  
     const btn1 = document.getElementById("btn1");
     const btn2 = document.getElementById("btn2");
     const btn3 = document.getElementById("btn3");
@@ -333,7 +333,7 @@
     const ytPlayer = document.getElementById("ytPlayer");
     const playerNote = document.getElementById("playerNote");
 
-    // ID do vídeo no YouTube (Saturno - BIN)
+    
     const YT_VIDEO_ID = "VF97zz_5oCc";
 
     btn1.addEventListener("click", () => {
@@ -372,5 +372,6 @@
     </script>
   </body>
   </html>
+
 
 
