@@ -14,7 +14,6 @@
       --muted:#5b5b5b;
       --shadow: 0 20px 60px rgba(0,0,0,.18);
     }
-
     *{ box-sizing:border-box; }
 
     body{
@@ -30,10 +29,8 @@
       overflow:hidden;
     }
 
-    /* corações discretos no fundo */
     .float-hearts{
-      position:fixed;
-      inset:0;
+      position:fixed; inset:0;
       pointer-events:none;
       opacity:.35;
       filter: blur(.1px);
@@ -52,9 +49,8 @@
       100% { transform: translateY(-20vh) translateX(var(--drift)); opacity:0; }
     }
 
-    /* cartão */
     .card{
-      width:min(520px, 92vw);
+      width:min(560px, 92vw);
       background:var(--card);
       border-radius:24px;
       box-shadow:var(--shadow);
@@ -83,17 +79,8 @@
       letter-spacing:.2px;
     }
 
-    h1{
-      margin:14px 0 6px;
-      font-size:34px;
-      line-height:1.1;
-    }
-    .sub{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.45;
-    }
+    h1{ margin:14px 0 6px; font-size:34px; line-height:1.1; }
+    .sub{ margin:0 0 18px; color:var(--muted); font-size:15px; line-height:1.45; }
 
     .actions{
       display:flex;
@@ -101,30 +88,35 @@
       flex-wrap:wrap;
       margin-top:14px;
     }
-
     button{
       appearance:none;
       border:none;
       cursor:pointer;
       padding:12px 16px;
       border-radius:14px;
-      font-weight:700;
+      font-weight:800;
       font-size:14px;
       transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
     }
-
     .btn-primary{
       background: linear-gradient(135deg, #ff2e55, #ff6b8a);
       color:white;
       box-shadow: 0 12px 30px rgba(255,46,85,.28);
     }
-    .btn-ghost{
-      background: rgba(0,0,0,.06);
-      color:#202020;
+    .btn-ghost{ background: rgba(0,0,0,.06); color:#202020; }
+    .btn-final{
+      background: linear-gradient(135deg, #8b5cf6, #ff2e55);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(139,92,246,.22);
     }
-
     button:hover{ transform: translateY(-1px); filter: brightness(1.02); }
     button:active{ transform: translateY(0px) scale(.99); }
+    button:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
 
     .message{
       margin-top:18px;
@@ -139,10 +131,49 @@
       from{ opacity:0; transform: translateY(6px); }
       to{ opacity:1; transform: translateY(0); }
     }
-    .message p{
-      margin:0;
-      font-size:15px;
-      line-height:1.5;
+    .message p{ margin:0; font-size:15px; line-height:1.5; }
+
+    /* Galeria */
+    .gallery{
+      display:none;
+      margin-top:14px;
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(0,0,0,.06);
+      animation: fadeIn .35s ease both;
+    }
+    .grid{
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid img{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius:14px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.10);
+      transform: translateZ(0);
+      transition: transform .15s ease, filter .15s ease;
+      cursor: pointer;
+    }
+    .grid img:hover{ transform: translateY(-2px) scale(1.01); filter: brightness(1.02); }
+
+    /* “Player” invisível do YouTube */
+    .player-wrap{
+      display:none;
+      margin-top:12px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);
+      background: rgba(0,0,0,.04);
+    }
+    .player-note{
+      font-size:12px;
+      color: rgba(0,0,0,.55);
+      margin-top:8px;
+      display:none;
     }
 
     .tiny{
@@ -155,11 +186,9 @@
       flex-wrap:wrap;
     }
 
-    /* confete de corações quando clicar */
     .burst{
       position:fixed;
-      left:50%;
-      top:50%;
+      left:50%; top:50%;
       transform: translate(-50%, -50%);
       pointer-events:none;
       font-size:18px;
@@ -182,39 +211,78 @@
 
     <h1>Eu amo você,<br>meu amor ❤️</h1>
     <p class="sub">
-      Amor, você é muito especial na minha vida.
-      Eu fiz isso só pra te lembrar do quanto eu amo você.
+      Paloma, você é meu lugar favorito no mundo.
+      Eu fiz isso só pra te lembrar do quanto você é especial pra mim.
     </p>
 
     <div class="actions">
-      <button class="btn-primary" id="btnOpen">Clica aqui amor! 💌</button>
-      <button class="btn-ghost" id="btnMore" disabled>quer mais uma?✨</button>
+      <button class="btn-primary" id="btn1">Clique aqui 💌</button>
+      <button class="btn-ghost" id="btn2" disabled>Quero ver a gente ✨</button>
+      <button class="btn-final" id="btn3" disabled>Última surpresa 🎵</button>
     </div>
 
+    <!-- 1ª mensagem -->
     <section class="message" id="msg1" aria-live="polite">
       <p>
         <strong>Feliz aniversário, meu amor! 🎂</strong><br>
-        Que o seu dia seja perfeito, lindo e cheio de alegria… igual você.
+        Que o seu dia seja leve, lindo e cheio de carinho… igual você.
         <br><br>
-        <strong>Eu te amo muito, minha princesa.</strong> 💖
+        <strong>Eu te amo muito, Paloma.</strong> 💖
       </p>
     </section>
 
+    <!-- 2ª mensagem (mantém a sua original) -->
     <section class="message" id="msg2" aria-live="polite">
       <p>
-        Se eu pudesse te dar o mundo, eu te daria
-        <strong>sem pensar duas vezes</strong> você é TUDO pra mim 🥺❤️
+        Se eu pudesse te dar um presente infinito, eu te daria
+        <strong>todas as versões de mim</strong> escolhendo você, todos os dias. 🥺❤️
       </p>
     </section>
 
+    <!-- Galeria de fotos (aparece no botão 2) -->
+    <section class="gallery" id="gallery" aria-label="Fotos nossas">
+      <div class="grid">
+        <img src="assets/foto1.jpg" alt="Foto 1 - nós" />
+        <img src="assets/foto2.jpg" alt="Foto 2 - nós" />
+        <img src="assets/foto3.jpg" alt="Foto 3 - nós" />
+      </div>
+    </section>
+
+    <!-- Final + música (aparece no botão 3) -->
+    <section class="message" id="finalMsg" aria-live="polite">
+      <p>
+        <strong>Agora só falta uma coisa:</strong><br>
+        fecha os olhos por 2 segundos… e sente o quanto eu te amo. 💞
+        <br><br>
+        <strong>Você é minha escolha.</strong> Hoje e sempre. ❤️
+      </p>
+    </section>
+
+    <div class="player-wrap" id="playerWrap">
+      <!-- YouTube (autoplay no clique) -->
+      <iframe
+        id="ytPlayer"
+        width="100%"
+        height="220"
+        src=""
+        title="Saturno - música"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="player-note" id="playerNote">
+      Se o celular bloquear o som, toca no vídeo uma vez e pronto 💖
+    </div>
+
     <div class="tiny">
-      <span>Feito por Luz, o amor da sua vida</span>
+      <span>Feito com amor</span>
       <span>💗</span>
     </div>
   </main>
 
   <script>
-    // Fundo com corações bem suaves
+    // Fundo com corações suaves
     const floatHearts = document.getElementById("floatHearts");
     const HEARTS = ["💖","💘","💗","❤️"];
 
@@ -222,22 +290,14 @@
       const h = document.createElement("div");
       h.className = "heart";
       h.textContent = HEARTS[Math.floor(Math.random()*HEARTS.length)];
-      h.style.left = Math.random()*100 + "vw";
+      h.style.left = Math.random() * 100 + "vw";
       h.style.animationDuration = (5 + Math.random()*6) + "s";
       h.style.setProperty("--drift", (Math.random()*80 - 40) + "px");
       floatHearts.appendChild(h);
-
-      // remover depois pra não pesar
       setTimeout(() => h.remove(), 12000);
     }
     for(let i=0;i<18;i++) setTimeout(spawnFloatingHeart, i*450);
     setInterval(spawnFloatingHeart, 700);
-
-    // Interação
-    const btnOpen = document.getElementById("btnOpen");
-    const btnMore = document.getElementById("btnMore");
-    const msg1 = document.getElementById("msg1");
-    const msg2 = document.getElementById("msg2");
 
     function heartBurst(){
       for(let i=0;i<18;i++){
@@ -247,29 +307,56 @@
         b.style.setProperty("--x", (Math.random()*260 - 130) + "px");
         b.style.setProperty("--y", (Math.random()*260 - 130) + "px");
         document.body.appendChild(b);
-        // força reflow pra animação pegar
         void b.offsetWidth;
         b.style.opacity = 1;
         setTimeout(() => b.remove(), 950);
       }
     }
 
-    btnOpen.addEventListener("click", () => {
+    // Botões
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+    const btn3 = document.getElementById("btn3");
+
+    const msg1 = document.getElementById("msg1");
+    const msg2 = document.getElementById("msg2");
+    const gallery = document.getElementById("gallery");
+
+    const finalMsg = document.getElementById("finalMsg");
+    const playerWrap = document.getElementById("playerWrap");
+    const ytPlayer = document.getElementById("ytPlayer");
+    const playerNote = document.getElementById("playerNote");
+
+    // ID do vídeo no YouTube (Saturno - BIN)
+    const YT_VIDEO_ID = "NE8URMvNYeo";
+
+    btn1.addEventListener("click", () => {
       msg1.style.display = "block";
-      btnMore.disabled = false;
-      btnOpen.textContent = "De novo 💖";
+      btn2.disabled = false;
+      btn1.textContent = "De novo 💖";
       heartBurst();
-      // rola pra mensagem se precisar
       msg1.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
 
-    btnMore.addEventListener("click", () => {
-      msg2.style.display = (msg2.style.display === "block") ? "none" : "block";
-      btnMore.textContent = (msg2.style.display === "block")
-        ? "Esconder surpresa 🙈"
-        : "Quero outra surpresa ✨";
+    btn2.addEventListener("click", () => {
+      msg2.style.display = "block";
+      gallery.style.display = "block";
+      btn3.disabled = false;
       heartBurst();
-      msg2.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      gallery.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    btn3.addEventListener("click", () => {
+      finalMsg.style.display = "block";
+      playerWrap.style.display = "block";
+      playerNote.style.display = "block";
+      heartBurst();
+
+      // autoplay só no clique (funciona melhor em celular)
+      const src = `https://www.youtube-nocookie.com/embed/${YT_VIDEO_ID}?autoplay=1&playsinline=1&rel=0`;
+      if (ytPlayer.src !== src) ytPlayer.src = src;
+
+      finalMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
   </script>
 </body>
