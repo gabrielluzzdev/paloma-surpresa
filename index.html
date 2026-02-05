@@ -26,7 +26,13 @@
       background: radial-gradient(1200px 800px at 20% 20%, rgba(255,255,255,.22), transparent 55%),
                   radial-gradient(900px 600px at 80% 30%, rgba(255,255,255,.18), transparent 60%),
                   linear-gradient(135deg, var(--bg1), var(--bg2));
-      overflow:hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      html, body{
+      height: 100%;
+      -webkit-overflow-scrolling: touch;
+}
+
     }
 
     .float-hearts{
@@ -361,9 +367,10 @@
         ytPlayer.src = srcUnmuted;
       }, 1200);
 
-      finalMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      playerWrap.scrollIntoView({ behavior: "smooth", block: "start" });
     });
     </script>
   </body>
   </html>
+
 
